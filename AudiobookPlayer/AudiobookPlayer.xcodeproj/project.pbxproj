@@ -76,6 +76,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CCDD4E92A4EBECA00503209 /* Build configuration list for PBXNativeTarget "AudiobookPlayer" */;
 			buildPhases = (
+				2CCDD4EF2A4EC0F500503209 /* SwiftLint */,
 				2CCDD4D72A4EBEC900503209 /* Sources */,
 				2CCDD4D82A4EBEC900503209 /* Frameworks */,
 				2CCDD4D92A4EBEC900503209 /* Resources */,
@@ -139,6 +140,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CCDD4EF2A4EC0F500503209 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint; then\n    swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2CCDD4D72A4EBEC900503209 /* Sources */ = {
