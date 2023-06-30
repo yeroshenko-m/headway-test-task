@@ -8,23 +8,13 @@
 
 import SwiftUI
 
-private enum Constants {
-    enum Label {
-        static let color: Color = Color(uiColor: .label)
-        static let font: Font = .system(size: 15.0, weight: .medium)
-        static let padding: CGFloat = 10.0
-    }
-
-    enum Background {
-        static let cornerRadius: CGFloat = 6.0
-        static let color: Color = Color(uiColor: .systemGray6)
-    }
-}
-
 struct PlaybackSpeedView: View {
+    let title: String
+    let onTapped: () -> Void
+
     var body: some View {
-        Button {} label: {
-            Text("Speed 1x")
+        Button(action: onTapped) {
+            Text(title)
                 .padding(Constants.Label.padding)
                 .background(Constants.Background.color)
                 .cornerRadius(Constants.Background.cornerRadius)
@@ -38,7 +28,7 @@ struct PlaybackSpeedView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(uiColor: .tertiarySystemBackground).ignoresSafeArea()
-            PlaybackSpeedView()
+            PlaybackSpeedView(title: "Speed 1x") {}
         }
     }
 }
