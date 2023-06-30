@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-enum Constants {
+private enum Constants {
     enum Icons {
         static let play = "play.fill"
         static let pause = "pause.fill"

@@ -13,6 +13,7 @@
 		2CCDD4E62A4EBECA00503209 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CCDD4E52A4EBECA00503209 /* Preview Assets.xcassets */; };
 		2CCDD4EE2A4EC0B500503209 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 2CCDD4ED2A4EC0B500503209 /* ComposableArchitecture */; };
 		2CCDD4F12A4EC4EF00503209 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD4F02A4EC4EF00503209 /* PlayerControlsView.swift */; };
+		2CCDD4F32A4ECE9A00503209 /* PlaybackProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD4F22A4ECE9A00503209 /* PlaybackProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2CCDD4E22A4EBECA00503209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CCDD4E52A4EBECA00503209 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CCDD4F02A4EC4EF00503209 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
+		2CCDD4F22A4ECE9A00503209 /* PlaybackProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				2CCDD4E22A4EBECA00503209 /* Assets.xcassets */,
 				2CCDD4E42A4EBECA00503209 /* Preview Content */,
 				2CCDD4F02A4EC4EF00503209 /* PlayerControlsView.swift */,
+				2CCDD4F22A4ECE9A00503209 /* PlaybackProgressView.swift */,
 			);
 			path = AudiobookPlayer;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCDD4F32A4ECE9A00503209 /* PlaybackProgressView.swift in Sources */,
 				2CCDD4E12A4EBEC900503209 /* ContentView.swift in Sources */,
 				2CCDD4DF2A4EBEC900503209 /* AudiobookPlayerApp.swift in Sources */,
 				2CCDD4F12A4EC4EF00503209 /* PlayerControlsView.swift in Sources */,
