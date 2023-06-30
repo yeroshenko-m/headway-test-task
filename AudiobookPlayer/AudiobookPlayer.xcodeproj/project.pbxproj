@@ -16,6 +16,8 @@
 		2CCDD4F32A4ECE9A00503209 /* PlaybackProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD4F22A4ECE9A00503209 /* PlaybackProgressView.swift */; };
 		2CCDD4F72A4EDC6600503209 /* PlaybackSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD4F62A4EDC6600503209 /* PlaybackSpeedView.swift */; };
 		2CCDD4F92A4EE29900503209 /* ContentModeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD4F82A4EE29900503209 /* ContentModeSelectorView.swift */; };
+		2CCDD4FB2A4EF5B500503209 /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD4FA2A4EF5B500503209 /* PlayerControls.swift */; };
+		2CCDD4FE2A4F124000503209 /* PlayerControlsView+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD4FD2A4F124000503209 /* PlayerControlsView+Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		2CCDD4F22A4ECE9A00503209 /* PlaybackProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackProgressView.swift; sourceTree = "<group>"; };
 		2CCDD4F62A4EDC6600503209 /* PlaybackSpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSpeedView.swift; sourceTree = "<group>"; };
 		2CCDD4F82A4EE29900503209 /* ContentModeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModeSelectorView.swift; sourceTree = "<group>"; };
+		2CCDD4FA2A4EF5B500503209 /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
+		2CCDD4FD2A4F124000503209 /* PlayerControlsView+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerControlsView+Constants.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +70,7 @@
 				2CCDD4E02A4EBEC900503209 /* ContentView.swift */,
 				2CCDD4E22A4EBECA00503209 /* Assets.xcassets */,
 				2CCDD4E42A4EBECA00503209 /* Preview Content */,
-				2CCDD4F02A4EC4EF00503209 /* PlayerControlsView.swift */,
+				2CCDD4FC2A4F122600503209 /* PlayerControls */,
 				2CCDD4F22A4ECE9A00503209 /* PlaybackProgressView.swift */,
 				2CCDD4F82A4EE29900503209 /* ContentModeSelectorView.swift */,
 			);
@@ -79,6 +83,16 @@
 				2CCDD4E52A4EBECA00503209 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2CCDD4FC2A4F122600503209 /* PlayerControls */ = {
+			isa = PBXGroup;
+			children = (
+				2CCDD4FA2A4EF5B500503209 /* PlayerControls.swift */,
+				2CCDD4F02A4EC4EF00503209 /* PlayerControlsView.swift */,
+				2CCDD4FD2A4F124000503209 /* PlayerControlsView+Constants.swift */,
+			);
+			path = PlayerControls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,8 +196,10 @@
 			files = (
 				2CCDD4F32A4ECE9A00503209 /* PlaybackProgressView.swift in Sources */,
 				2CCDD4E12A4EBEC900503209 /* ContentView.swift in Sources */,
+				2CCDD4FB2A4EF5B500503209 /* PlayerControls.swift in Sources */,
 				2CCDD4F92A4EE29900503209 /* ContentModeSelectorView.swift in Sources */,
 				2CCDD4DF2A4EBEC900503209 /* AudiobookPlayerApp.swift in Sources */,
+				2CCDD4FE2A4F124000503209 /* PlayerControlsView+Constants.swift in Sources */,
 				2CCDD4F12A4EC4EF00503209 /* PlayerControlsView.swift in Sources */,
 				2CCDD4F72A4EDC6600503209 /* PlaybackSpeedView.swift in Sources */,
 			);
