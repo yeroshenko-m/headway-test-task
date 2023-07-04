@@ -17,17 +17,17 @@ struct PlayerControls: ReducerProtocol {
             case paused
             case disabled
 
-            var isEnabled: Bool {
-                self != .disabled
-            }
+            var isEnabled: Bool { self != .disabled }
+            var isPlaying: Bool { self == .playing }
         }
         // swiftlint:enable nesting
 
         var playbackState: PlaybackState = .disabled
         var hasPreviousItem: Bool = false
         var hasNextItem: Bool = false
-        var canSeekBackward: Bool = false
-        var canSeekForward: Bool = false
+
+        var canSeekBackward: Bool { playbackState != .disabled }
+        var canSeekForward: Bool { playbackState != .disabled }
     }
 
     enum Action {

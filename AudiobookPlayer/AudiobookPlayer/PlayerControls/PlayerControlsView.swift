@@ -40,7 +40,9 @@ struct PlayerControlsView: View {
                 Button {
                     viewStore.send(.playButtonTapped)
                 } label: {
-                    Image(systemName: Constants.Icons.play)
+                    Image(systemName: viewStore.playbackState.isPlaying ?
+                          Constants.Icons.pause :
+                            Constants.Icons.play)
                         .font(Constants.Fonts.playbackButton)
                 }
                 .foregroundColor(
@@ -82,9 +84,8 @@ struct PlayerControlsView: View {
                     initialState: PlayerControls.State(
                         playbackState: .paused,
                         hasPreviousItem: false,
-                        hasNextItem: true,
-                        canSeekBackward: false,
-                        canSeekForward: true),
+                        hasNextItem: true
+                    ),
                     reducer: PlayerControls()
                 )
             )
