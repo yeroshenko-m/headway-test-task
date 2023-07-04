@@ -8,7 +8,7 @@
 
 import ComposableArchitecture
 import SwiftUI
-import UIKit
+import UIKit.UISlider
 
 struct PlaybackProgressView: View {
     let store: StoreOf<PlaybackProgress>
@@ -28,16 +28,12 @@ struct PlaybackProgressView: View {
                 Text(viewStore.current.timeCode)
                     .font(Constants.Labels.font)
                     .foregroundColor(Constants.Labels.color)
-                    .frame(width: 50.0)
-                    .fixedSize()
+                    .frame(width: Constants.Labels.width)
             } maximumValueLabel: {
                 Text(viewStore.duration.timeCode)
                     .font(Constants.Labels.font)
                     .foregroundColor(Constants.Labels.color)
-                    .frame(width: 50.0)
-                    .fixedSize()
-            } onEditingChanged: { isEditing in
-                print(isEditing)
+                    .frame(width: Constants.Labels.width)
             }
             .disabled(!viewStore.isEnabled)
             .tint(Constants.Thumb.color)

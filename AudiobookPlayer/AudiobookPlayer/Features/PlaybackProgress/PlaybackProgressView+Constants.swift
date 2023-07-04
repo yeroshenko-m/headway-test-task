@@ -14,6 +14,7 @@ extension PlaybackProgressView {
         enum Labels {
             static let font: Font = .system(size: 13.0, weight: .regular, design: .rounded)
             static let color: Color = Color(uiColor: .gray)
+            static let width: CGFloat = 50.0
         }
 
         enum Progress {
