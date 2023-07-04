@@ -19,3 +19,5 @@ extension Chapter {
         audioURL = URL(string: dtoModel.audio)
     }
 }
+
+extension Chapter: Equatable {}

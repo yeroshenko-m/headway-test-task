@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct AudiobooksAPI {
+struct AudiobookAPI {
     static let url = URL(string: "https://raw.githubusercontent.com/yeroshenko-m/audiobook/main/content.json")!
 }

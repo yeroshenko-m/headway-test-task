@@ -23,3 +23,5 @@ extension Audiobook {
             .compactMap { Chapter(from: $0) }
     }
 }
+
+extension Audiobook: Equatable {}
