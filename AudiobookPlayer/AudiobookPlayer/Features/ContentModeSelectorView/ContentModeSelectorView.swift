@@ -76,12 +76,14 @@ struct ContentModeSelectorView: View {
     }
 }
 
-struct ContentModeSelectorView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Color(uiColor: .secondarySystemFill)
-                .ignoresSafeArea()
-            ContentModeSelectorView()
+#if DEBUG
+    struct ContentModeSelectorView_Previews: PreviewProvider {
+        static var previews: some View {
+            ZStack {
+                Color(uiColor: .secondarySystemFill)
+                    .ignoresSafeArea()
+                ContentModeSelectorView()
+            }
         }
     }
-}
+#endif

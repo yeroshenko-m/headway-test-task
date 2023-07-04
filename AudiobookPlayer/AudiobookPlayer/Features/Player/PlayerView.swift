@@ -63,13 +63,15 @@ struct PlayerView: View {
     }
 }
 
-struct PlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerView(
-            store: Store(
-                initialState: Player.State(),
-                reducer: Player()
+#if DEBUG
+    struct PlayerView_Previews: PreviewProvider {
+        static var previews: some View {
+            PlayerView(
+                store: Store(
+                    initialState: Player.State(),
+                    reducer: Player()
+                )
             )
-        )
+        }
     }
-}
+#endif

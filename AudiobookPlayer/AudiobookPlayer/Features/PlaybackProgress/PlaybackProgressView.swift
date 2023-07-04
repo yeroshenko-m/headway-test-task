@@ -53,13 +53,15 @@ struct PlaybackProgressView: View {
     }
 }
 
-struct PlaybackProgressView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlaybackProgressView(
-            store: Store(
-                initialState: PlaybackProgress.State(),
-                reducer: PlaybackProgress()
+#if DEBUG
+    struct PlaybackProgressView_Previews: PreviewProvider {
+        static var previews: some View {
+            PlaybackProgressView(
+                store: Store(
+                    initialState: PlaybackProgress.State(),
+                    reducer: PlaybackProgress()
+                )
             )
-        )
+        }
     }
-}
+#endif

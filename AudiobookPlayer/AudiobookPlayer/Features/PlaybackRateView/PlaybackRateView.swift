@@ -24,11 +24,13 @@ struct PlaybackRateView: View {
     }
 }
 
-struct PlaybackRateView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Color(uiColor: .tertiarySystemBackground).ignoresSafeArea()
-            PlaybackRateView(title: "Speed 1x") {}
+#if DEBUG
+    struct PlaybackRateView_Previews: PreviewProvider {
+        static var previews: some View {
+            ZStack {
+                Color(uiColor: .tertiarySystemBackground).ignoresSafeArea()
+                PlaybackRateView(title: "Speed 1x") {}
+            }
         }
     }
-}
+#endif
