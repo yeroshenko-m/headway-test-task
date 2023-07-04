@@ -1,5 +1,5 @@
 //
-//  AudioPlayerClientError.swift
+//  AudioPlayerError.swift
 //  AudiobookPlayer
 //
 //  Author:  Mykhailo Yeroshenko
@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum AudioPlayerClientError: Error {
+enum AudioPlayerError: Error {
     case invalidItemDuration
 }
