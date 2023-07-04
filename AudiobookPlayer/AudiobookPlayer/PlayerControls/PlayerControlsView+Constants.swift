@@ -20,13 +20,13 @@ extension PlayerControlsView {
             static let previous = "backward.end.fill"
             static let next = "forward.end.fill"
             static let color: Color = Color(uiColor: .label)
-            static let spacing: CGFloat = 20.0
+            static let spacing: CGFloat = 25.0
         }
 
-        enum Fonts {
-            static let playbackButton: Font = .system(size: 30.0)
-            static let progressButtons: Font = .system(size: 25.0)
-            static let trackButton: Font = .system(size: 20.0)
+        enum Size {
+            static let playbackButton: CGFloat = 35.0
+            static let progressButtons: CGFloat = 30.0
+            static let trackButton: CGFloat = 20.0
         }
 
         enum Colors {

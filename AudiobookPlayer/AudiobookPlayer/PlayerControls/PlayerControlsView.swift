@@ -15,64 +15,66 @@ struct PlayerControlsView: View {
     var body: some View {
         WithViewStore(self.store) { $0 }  content: { viewStore in
             HStack(spacing: Constants.Icons.spacing) {
-                Button {
+                button(
+                    with: Constants.Icons.previous,
+                    size: Constants.Size.trackButton,
+                    isEnabled: viewStore.hasPreviousItem
+                ) {
                     viewStore.send(.previousButtonTapped)
-                } label: {
-                    Image(systemName: Constants.Icons.previous)
-                        .font(Constants.Fonts.trackButton)
                 }
-                .foregroundColor(
-                    viewStore.hasPreviousItem ? Constants.Colors.enabled : Constants.Colors.disabled
-                )
-                .disabled(!viewStore.hasPreviousItem)
 
-                Button {
+                button(
+                    with: Constants.Icons.goBackward,
+                    size: Constants.Size.progressButtons,
+                    isEnabled: viewStore.canSeekBackward
+                ) {
                     viewStore.send(.seekBackwardButtonTapped)
-                } label: {
-                    Image(systemName: Constants.Icons.goBackward)
-                        .font(Constants.Fonts.progressButtons)
                 }
-                .foregroundColor(
-                    viewStore.canSeekBackward ? Constants.Colors.enabled : Constants.Colors.disabled
-                )
-                .disabled(!viewStore.canSeekBackward)
 
-                Button {
+                button(
+                    with: viewStore.playbackState.isPlaying ? Constants.Icons.pause : Constants.Icons.play,
+                    size: Constants.Size.playbackButton,
+                    isEnabled: viewStore.playbackState.isEnabled
+                ) {
                     viewStore.send(.playButtonTapped)
-                } label: {
-                    Image(systemName: viewStore.playbackState.isPlaying ?
-                          Constants.Icons.pause :
-                            Constants.Icons.play)
-                        .font(Constants.Fonts.playbackButton)
                 }
-                .foregroundColor(
-                    viewStore.playbackState.isEnabled ? Constants.Colors.enabled : Constants.Colors.disabled
-                )
-                .disabled(!viewStore.playbackState.isEnabled)
 
-                Button {
+                button(
+                    with: Constants.Icons.goForward,
+                    size: Constants.Size.progressButtons,
+                    isEnabled: viewStore.canSeekForward
+                ) {
                     viewStore.send(.seekForwardButtonTapped)
-                } label: {
-                    Image(systemName: Constants.Icons.goForward)
-                        .font(Constants.Fonts.progressButtons)
                 }
-                .foregroundColor(
-                    viewStore.canSeekForward ? Constants.Colors.enabled : Constants.Colors.disabled
-                )
-                .disabled(!viewStore.canSeekForward)
 
-                Button {
+                button(
+                    with: Constants.Icons.next,
+                    size: Constants.Size.trackButton,
+                    isEnabled: viewStore.hasNextItem
+                ) {
                     viewStore.send(.nextButtonTapped)
-                } label: {
-                    Image(systemName: Constants.Icons.next)
-                        .font(Constants.Fonts.trackButton)
                 }
-                .foregroundColor(
-                    viewStore.hasNextItem ? Constants.Colors.enabled : Constants.Colors.disabled
-                )
-                .disabled(!viewStore.hasNextItem)
             }
         }
+    }
+
+    // MARK: - Private helpers
+
+    @ViewBuilder
+    private func button(
+        with image: String,
+        size: CGFloat,
+        isEnabled: Bool,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            Image(systemName: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: size, height: size)
+        }
+        .foregroundColor(isEnabled ? Constants.Colors.enabled : Constants.Colors.disabled)
+        .disabled(!isEnabled)
     }
 }
 
