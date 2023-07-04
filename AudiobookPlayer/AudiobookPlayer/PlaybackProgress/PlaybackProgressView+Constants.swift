@@ -12,7 +12,7 @@ import SwiftUI
 extension PlaybackProgressView {
     enum Constants {
         enum Labels {
-            static let font: Font = .system(size: 15.0, weight: .regular, design: .rounded)
+            static let font: Font = .system(size: 13.0, weight: .regular, design: .rounded)
             static let color: Color = Color(uiColor: .gray)
         }
 

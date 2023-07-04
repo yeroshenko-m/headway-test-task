@@ -24,10 +24,6 @@ struct PlaybackProgress: ReducerProtocol {
     }
 
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-        switch action {
-        case let .progressUpdated(progress):
-            state.current = progress
-            return .none
-        }
+        .none
     }
 }

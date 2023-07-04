@@ -13,13 +13,13 @@ extension PlaybackSpeedView {
     enum Constants {
         enum Label {
             static let color: Color = Color(uiColor: .label)
-            static let font: Font = .system(size: 15.0, weight: .medium)
+            static let font: Font = .system(size: 12.0, weight: .medium)
             static let padding: CGFloat = 10.0
         }
 
         enum Background {
             static let cornerRadius: CGFloat = 6.0
-            static let color: Color = Color(uiColor: .systemGray6)
+            static let color: Color = .gray.opacity(0.15)
         }
     }
 }
