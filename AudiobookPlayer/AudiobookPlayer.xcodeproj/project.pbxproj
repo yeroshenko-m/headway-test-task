@@ -183,6 +183,35 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		2C9562102A5471F6002B5FD6 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				2C9562122A547230002B5FD6 /* App */,
+				2C9562112A547213002B5FD6 /* ContentModeSelectorView */,
+				2C9561FE2A535416002B5FD6 /* PlaybackProgress */,
+				2CCDD5042A4F1C2700503209 /* PlaybackRateView */,
+				2C9562072A53FDD4002B5FD6 /* Player */,
+				2CCDD4FC2A4F122600503209 /* PlayerControls */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		2C9562112A547213002B5FD6 /* ContentModeSelectorView */ = {
+			isa = PBXGroup;
+			children = (
+				2CCDD4F82A4EE29900503209 /* ContentModeSelectorView.swift */,
+			);
+			path = ContentModeSelectorView;
+			sourceTree = "<group>";
+		};
+		2C9562122A547230002B5FD6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2CCDD4DE2A4EBEC900503209 /* AudiobookPlayerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		2CCDD4D22A4EBEC900503209 = {
 			isa = PBXGroup;
 			children = (
@@ -202,16 +231,11 @@
 		2CCDD4DD2A4EBEC900503209 /* AudiobookPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				2C9562072A53FDD4002B5FD6 /* Player */,
-				2C9561FE2A535416002B5FD6 /* PlaybackProgress */,
-				2C9561F82A532278002B5FD6 /* Extensions */,
-				2C4D70D42A52B2C80052BB85 /* Services */,
-				2CCDD5042A4F1C2700503209 /* PlaybackRateView */,
-				2CCDD4DE2A4EBEC900503209 /* AudiobookPlayerApp.swift */,
 				2CCDD4E22A4EBECA00503209 /* Assets.xcassets */,
+				2C9561F82A532278002B5FD6 /* Extensions */,
+				2C9562102A5471F6002B5FD6 /* Features */,
+				2C4D70D42A52B2C80052BB85 /* Services */,
 				2CCDD4E42A4EBECA00503209 /* Preview Content */,
-				2CCDD4FC2A4F122600503209 /* PlayerControls */,
-				2CCDD4F82A4EE29900503209 /* ContentModeSelectorView.swift */,
 			);
 			path = AudiobookPlayer;
 			sourceTree = "<group>";
