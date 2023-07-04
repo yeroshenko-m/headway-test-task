@@ -1,5 +1,5 @@
 //
-//  PlaybackSpeedView+Constants.swift
+//  PlaybackRateView+Constants.swift
 //  AudiobookPlayer
 //
 //  Author:  Mykhailo Yeroshenko
@@ -9,7 +9,7 @@
 import SwiftUI
 
 // swiftlint:disable nesting
-extension PlaybackSpeedView {
+extension PlaybackRateView {
     enum Constants {
         enum Label {
             static let color: Color = Color(uiColor: .label)

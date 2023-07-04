@@ -1,5 +1,5 @@
 //
-//  PlaybackSpeedView.swift
+//  PlaybackRateView.swift
 //  AudiobookPlayer
 //
 //  Author:  Mykhailo Yeroshenko
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PlaybackSpeedView: View {
+struct PlaybackRateView: View {
     let title: String
     let onTapped: () -> Void
 
@@ -24,11 +24,11 @@ struct PlaybackSpeedView: View {
     }
 }
 
-struct PlaybackSpeedView_Previews: PreviewProvider {
+struct PlaybackRateView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color(uiColor: .tertiarySystemBackground).ignoresSafeArea()
-            PlaybackSpeedView(title: "Speed 1x") {}
+            PlaybackRateView(title: "Speed 1x") {}
         }
     }
 }

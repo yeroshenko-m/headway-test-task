@@ -40,7 +40,7 @@ struct PlayerView: View {
                     )
                     .padding(.top, Constants.Progress.topPadding)
 
-                    PlaybackSpeedView(title: "Speed 1x") {
+                    PlaybackRateView(title: "Speed 1x") {
                         viewStore.send(.rateButtonTapped)
                     }
                     .padding(.top, Constants.Rate.topPadding)
