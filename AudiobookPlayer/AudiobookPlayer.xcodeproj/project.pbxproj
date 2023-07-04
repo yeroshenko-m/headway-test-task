@@ -174,11 +174,10 @@
 		2C9562072A53FDD4002B5FD6 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				2CCDD4E02A4EBEC900503209 /* PlayerView.swift */,
-				2C95620E2A546CEE002B5FD6 /* PlayerView+Constants.swift */,
 				2C9562082A53FE59002B5FD6 /* Player.swift */,
 				2C95620A2A544581002B5FD6 /* Player+Constants.swift */,
-				2C95620C2A545DDF002B5FD6 /* RemoteImage.swift */,
+				2CCDD4E02A4EBEC900503209 /* PlayerView.swift */,
+				2C95620E2A546CEE002B5FD6 /* PlayerView+Constants.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -212,6 +211,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		2C9562132A547530002B5FD6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2C95620C2A545DDF002B5FD6 /* RemoteImage.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		2CCDD4D22A4EBEC900503209 = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				2CCDD4E22A4EBECA00503209 /* Assets.xcassets */,
+				2C9562132A547530002B5FD6 /* Common */,
 				2C9561F82A532278002B5FD6 /* Extensions */,
 				2C9562102A5471F6002B5FD6 /* Features */,
 				2C4D70D42A52B2C80052BB85 /* Services */,
