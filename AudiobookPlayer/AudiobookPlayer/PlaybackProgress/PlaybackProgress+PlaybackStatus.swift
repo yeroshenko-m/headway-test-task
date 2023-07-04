@@ -9,14 +9,14 @@
 import Foundation
 
 extension PlaybackProgress {
-    struct PlaybackTime: Equatable {
+    struct TimeIntervals: Equatable {
         let duration: Double
         let step: Double
     }
 
-    enum PlaybackConfiguration: Equatable {
+    enum PlaybackStatus: Equatable {
         case disabled
-        case enabled(PlaybackTime)
+        case enabled(TimeIntervals)
 
         var isEnabled: Bool {
             self != .disabled

@@ -17,21 +17,27 @@ struct PlaybackProgressView: View {
         WithViewStore(self.store) { $0 } content: { viewStore in
             Slider(
                 value: viewStore.binding(
-                    get: \.currentTimecode,
-                    send: PlaybackProgress.Action.progressChanged
+                    get: \.current,
+                    send: PlaybackProgress.Action.progressUpdated
                 ),
                 in: .zero ... viewStore.duration,
                 step: viewStore.step
             ) {
                 Text(Constants.Progress.title)
             } minimumValueLabel: {
-                Text(viewStore.currentTimecode.timeCode)
+                Text(viewStore.current.timeCode)
                     .font(Constants.Labels.font)
                     .foregroundColor(Constants.Labels.color)
+                    .frame(width: 50.0)
+                    .fixedSize()
             } maximumValueLabel: {
                 Text(viewStore.duration.timeCode)
                     .font(Constants.Labels.font)
                     .foregroundColor(Constants.Labels.color)
+                    .frame(width: 50.0)
+                    .fixedSize()
+            } onEditingChanged: { isEditing in
+                print(isEditing)
             }
             .disabled(!viewStore.isEnabled)
             .tint(Constants.Thumb.color)

@@ -12,8 +12,8 @@ import SwiftUI
 extension PlaybackProgressView {
     enum Constants {
         enum Labels {
-            static let font: Font = .system(size: 15.0, weight: .regular)
-            static let color: Color = Color(uiColor: .lightGray)
+            static let font: Font = .system(size: 15.0, weight: .regular, design: .rounded)
+            static let color: Color = Color(uiColor: .gray)
         }
 
         enum Progress {

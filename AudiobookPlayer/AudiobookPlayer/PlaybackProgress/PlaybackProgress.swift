@@ -11,22 +11,22 @@ import Foundation
 
 struct PlaybackProgress: ReducerProtocol {
     struct State: Equatable {
-        var currentTimecode: Double = .zero
-        var configuration: PlaybackConfiguration = .disabled
+        var current: Double = .zero
+        var status: PlaybackStatus = .disabled
 
-        var isEnabled: Bool { configuration.isEnabled }
-        var duration: Double { configuration.duration }
-        var step: Double { configuration.step }
+        var isEnabled: Bool { status.isEnabled }
+        var duration: Double { status.duration }
+        var step: Double { status.step }
     }
 
     enum Action: Equatable {
-        case progressChanged(Double)
+        case progressUpdated(Double)
     }
 
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action {
-        case let .progressChanged(timeCode):
-            state.currentTimecode = timeCode
+        case let .progressUpdated(progress):
+            state.current = progress
             return .none
         }
     }
