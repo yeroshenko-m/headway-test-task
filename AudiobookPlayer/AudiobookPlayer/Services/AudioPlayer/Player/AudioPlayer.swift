@@ -86,21 +86,14 @@ extension AudioPlayer: DependencyKey {
 
     static var testValue: AudioPlayer {
         AudioPlayer { _ in
-            unimplemented("\(AudioPlayer.self).loadItemAt")
+            100.0
         } progress: {
-            unimplemented("\(AudioPlayer.self).progress")
+            .finished
         } play: { _ in
-            unimplemented("\(AudioPlayer.self).play")
-        } pause: {
-            unimplemented("\(AudioPlayer.self).pause")
-        } seekTo: { _ in
-            unimplemented("\(AudioPlayer.self).seekTo")
+        } pause: {} seekTo: { _ in
         } seekForwardBy: { _ in
-            unimplemented("\(AudioPlayer.self).seekForwardBy")
         } seekBackwardBy: { _ in
-            unimplemented("\(AudioPlayer.self).seekBackwardBy")
         } setPlaybackRate: { _ in
-            unimplemented("\(AudioPlayer.self).setPlaybackRate")
         }
     }
 }

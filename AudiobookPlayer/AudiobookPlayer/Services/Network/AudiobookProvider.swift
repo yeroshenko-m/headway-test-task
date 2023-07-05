@@ -43,7 +43,7 @@ extension AudiobookProvider: DependencyKey {
 
     static var testValue: AudiobookProvider {
         AudiobookProvider {
-            unimplemented("\(AudiobookProvider.self)")
+            .mock
         }
     }
 }

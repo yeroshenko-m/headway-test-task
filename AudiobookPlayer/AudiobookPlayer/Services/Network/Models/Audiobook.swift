@@ -14,6 +14,8 @@ struct Audiobook {
     let chapters: [Chapter]
 }
 
+// MARK: - Convenience init
+
 extension Audiobook {
     init(from dtoModel: AudiobookDTO) {
         title = dtoModel.bookTitle
@@ -24,4 +26,18 @@ extension Audiobook {
     }
 }
 
+// MARK: - Audiobook + Equatable
+
 extension Audiobook: Equatable {}
+
+// MARK: - Mock
+
+extension Audiobook {
+    static var mock: Audiobook {
+        .init(
+            title: "Mock audiobook",
+            imageURL: URL(string: "https://mock/image.jpeg"),
+            chapters: Chapter.mocks
+        )
+    }
+}

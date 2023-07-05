@@ -20,6 +20,7 @@
 		2C6C3A522A555AB20068ACA4 /* ContentModeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A512A555AB20068ACA4 /* ContentModeSelector.swift */; };
 		2C6C3A562A5562DC0068ACA4 /* Player+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A552A5562DC0068ACA4 /* Player+State.swift */; };
 		2C6C3A582A55630A0068ACA4 /* Player+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A572A55630A0068ACA4 /* Player+Action.swift */; };
+		2C6C3A602A5569A60068ACA4 /* AudioplayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A5F2A5569A60068ACA4 /* AudioplayerTests.swift */; };
 		2C9561EF2A52C0EB002B5FD6 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561EE2A52C0EB002B5FD6 /* AudioPlayer.swift */; };
 		2C9561F12A531462002B5FD6 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561F02A531462002B5FD6 /* AudioPlayerController.swift */; };
 		2C9561F32A531F7A002B5FD6 /* AudioPlayerClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561F22A531F7A002B5FD6 /* AudioPlayerClientError.swift */; };
@@ -48,6 +49,16 @@
 		2CCDD5062A4F1C3700503209 /* PlaybackRateView+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD5052A4F1C3700503209 /* PlaybackRateView+Constants.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2C6C3A612A5569A60068ACA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CCDD4D32A4EBEC900503209 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CCDD4DA2A4EBEC900503209;
+			remoteInfo = AudiobookPlayer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2C4D70D52A52B2DE0052BB85 /* AudiobookProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookProvider.swift; sourceTree = "<group>"; };
 		2C4D70D72A52B2E80052BB85 /* AudiobookDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookDTO.swift; sourceTree = "<group>"; };
@@ -62,6 +73,8 @@
 		2C6C3A512A555AB20068ACA4 /* ContentModeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModeSelector.swift; sourceTree = "<group>"; };
 		2C6C3A552A5562DC0068ACA4 /* Player+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+State.swift"; sourceTree = "<group>"; };
 		2C6C3A572A55630A0068ACA4 /* Player+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Action.swift"; sourceTree = "<group>"; };
+		2C6C3A5D2A5569A50068ACA4 /* AudiobookPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudiobookPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6C3A5F2A5569A60068ACA4 /* AudioplayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioplayerTests.swift; sourceTree = "<group>"; };
 		2C9561EE2A52C0EB002B5FD6 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		2C9561F02A531462002B5FD6 /* AudioPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
 		2C9561F22A531F7A002B5FD6 /* AudioPlayerClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerClientError.swift; sourceTree = "<group>"; };
@@ -91,6 +104,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C6C3A5A2A5569A50068ACA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CCDD4D82A4EBEC900503209 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,6 +188,14 @@
 				2C95620E2A546CEE002B5FD6 /* PlayerView+Constants.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2C6C3A5E2A5569A60068ACA4 /* AudiobookPlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C6C3A5F2A5569A60068ACA4 /* AudioplayerTests.swift */,
+			);
+			path = AudiobookPlayerTests;
 			sourceTree = "<group>";
 		};
 		2C9561ED2A52C0DF002B5FD6 /* AudioPlayer */ = {
@@ -271,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				2CCDD4DD2A4EBEC900503209 /* AudiobookPlayer */,
+				2C6C3A5E2A5569A60068ACA4 /* AudiobookPlayerTests */,
 				2CCDD4DC2A4EBEC900503209 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -279,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				2CCDD4DB2A4EBEC900503209 /* AudiobookPlayer.app */,
+				2C6C3A5D2A5569A50068ACA4 /* AudiobookPlayerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -326,6 +356,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2C6C3A5C2A5569A50068ACA4 /* AudiobookPlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C6C3A632A5569A60068ACA4 /* Build configuration list for PBXNativeTarget "AudiobookPlayerTests" */;
+			buildPhases = (
+				2C6C3A592A5569A50068ACA4 /* Sources */,
+				2C6C3A5A2A5569A50068ACA4 /* Frameworks */,
+				2C6C3A5B2A5569A50068ACA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C6C3A622A5569A60068ACA4 /* PBXTargetDependency */,
+			);
+			name = AudiobookPlayerTests;
+			productName = AudiobookPlayerTests;
+			productReference = 2C6C3A5D2A5569A50068ACA4 /* AudiobookPlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2CCDD4DA2A4EBEC900503209 /* AudiobookPlayer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CCDD4E92A4EBECA00503209 /* Build configuration list for PBXNativeTarget "AudiobookPlayer" */;
@@ -357,6 +405,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					2C6C3A5C2A5569A50068ACA4 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 2CCDD4DA2A4EBEC900503209;
+					};
 					2CCDD4DA2A4EBEC900503209 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -379,11 +431,19 @@
 			projectRoot = "";
 			targets = (
 				2CCDD4DA2A4EBEC900503209 /* AudiobookPlayer */,
+				2C6C3A5C2A5569A50068ACA4 /* AudiobookPlayerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C6C3A5B2A5569A50068ACA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CCDD4D92A4EBEC900503209 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,6 +478,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C6C3A592A5569A50068ACA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C6C3A602A5569A60068ACA4 /* AudioplayerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CCDD4D72A4EBEC900503209 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -463,7 +531,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2C6C3A622A5569A60068ACA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2CCDD4DA2A4EBEC900503209 /* AudiobookPlayer */;
+			targetProxy = 2C6C3A612A5569A60068ACA4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2C6C3A642A5569A60068ACA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GZMKX7A59M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meroshenko.AudiobookPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudiobookPlayer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AudiobookPlayer";
+			};
+			name = Debug;
+		};
+		2C6C3A652A5569A60068ACA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GZMKX7A59M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meroshenko.AudiobookPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudiobookPlayer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AudiobookPlayer";
+			};
+			name = Release;
+		};
 		2CCDD4E72A4EBECA00503209 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -639,6 +751,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C6C3A632A5569A60068ACA4 /* Build configuration list for PBXNativeTarget "AudiobookPlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C6C3A642A5569A60068ACA4 /* Debug */,
+				2C6C3A652A5569A60068ACA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2CCDD4D62A4EBEC900503209 /* Build configuration list for PBXProject "AudiobookPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
