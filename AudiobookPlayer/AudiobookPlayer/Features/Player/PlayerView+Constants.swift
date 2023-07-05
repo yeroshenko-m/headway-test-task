@@ -12,7 +12,7 @@ import SwiftUI
 extension PlayerView {
     enum Constants {
         enum Content {
-            static let background: Color = Color(uiColor: .systemGroupedBackground)
+            static let background: Color = Color(uiColor: .tertiarySystemGroupedBackground)
             static let padding: CGFloat = 10.0
         }
 

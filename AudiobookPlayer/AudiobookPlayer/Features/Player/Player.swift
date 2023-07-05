@@ -20,20 +20,19 @@ struct Player: ReducerProtocol {
         var progress: PlaybackProgress.State = .init()
         var controls: PlayerControls.State = .init()
 
+        var alert: AlertState<Action>?
+
         var chaptersCountTitle: String {
-            guard !chapters.isEmpty else { return "" }
+            guard !chapters.isEmpty else { return "No keypoints available" }
             return "Key point \(currentChapterIndex + 1) of \(chapters.count)"
         }
 
         var chapterTitle: String {
-            guard
-                !chapters.isEmpty,
-                chapters.count > currentChapterIndex
-            else { return "" }
-
+            guard chapters.count > currentChapterIndex else { return "Descruption unavailable" }
             return chapters[currentChapterIndex].title
         }
 
+        var rateTitle: String { "Rate \(playbackRate.stringWithTruncatedZero)x" }
         var hasNextChapter: Bool { chapters.count > currentChapterIndex }
         var hasPreviousChapter: Bool { currentChapterIndex > .zero }
     }
@@ -51,8 +50,8 @@ struct Player: ReducerProtocol {
         case controls(PlayerControls.Action)
     }
 
-    @Dependency(\.audiobookProvider) var audiobookClient
-    @Dependency(\.audioplayer) var audioplayerClient
+    @Dependency(\.audiobookProvider) var audiobookProvider
+    @Dependency(\.audioplayer) var audioplayer
 
     var body: some ReducerProtocolOf<Self> {
         Scope(state: \.progress, action: /Action.progress) {
@@ -69,7 +68,7 @@ struct Player: ReducerProtocol {
                 return .run { send in
                     await send(
                         .audiobookLoaded(
-                            TaskResult { try await audiobookClient.audiobook() }
+                            TaskResult { try await audiobookProvider.audiobook() }
                         )
                     )
                 }
@@ -84,7 +83,7 @@ struct Player: ReducerProtocol {
                 return .run { send in
                     await send(
                         .chapterLoaded(
-                            TaskResult { try await audioplayerClient.loadItemAt(firstChapterUrl) }
+                            TaskResult { try await audioplayer.loadItemAt(chapterAudio) }
                         )
                     )
                 }
@@ -100,7 +99,7 @@ struct Player: ReducerProtocol {
                 state.controls.hasPreviousItem = state.hasPreviousChapter
 
                 return .run { send in
-                    for await progress in await audioplayerClient.progress() {
+                    for await progress in await audioplayer.progress() {
                         await send(.playbackProgressUpdated(progress))
                     }
                 }
@@ -110,19 +109,15 @@ struct Player: ReducerProtocol {
                 state.controls.playbackState = .disabled
                 state.controls.hasNextItem = state.hasNextChapter
                 state.controls.hasPreviousItem = state.hasPreviousChapter
-                #warning("Show alert")
                 return .none
+
+            case .chapterChanged:
+                state.controls.playbackState = .disabled
+                state.progress.status = .disabled
+                return loadCurrentChapter(for: &state)
 
             case let .playbackProgressUpdated(progress):
                 state.progress.current = progress
-                return .none
-
-            case .playbackStarted:
-                state.controls.playbackState = .playing
-                return .none
-
-            case .playbackPaused:
-                state.controls.playbackState = .paused
                 return .none
 
             case .rateButtonTapped:
@@ -148,34 +143,16 @@ struct Player: ReducerProtocol {
         switch controlsAction {
         case .nextButtonTapped:
             state.currentChapterIndex += 1
-            state.controls.playbackState = .disabled
-            state.progress.status = .disabled
-            let chapterUrl = state.chapters[state.currentChapterIndex].audioURL!
 
             return .run { send in
-                await audioplayerClient.pause()
-
-                await send(
-                    .chapterLoaded(
-                        TaskResult { try await audioplayerClient.loadItemAt(chapterUrl) }
-                    )
-                )
+                await send(.chapterChanged)
             }
 
         case .previousButtonTapped:
             state.currentChapterIndex -= 1
-            state.controls.playbackState = .disabled
-            state.progress.status = .disabled
-            let chapterUrl = state.chapters[state.currentChapterIndex].audioURL!
 
             return .run { send in
-                await audioplayerClient.pause()
-
-                await send(
-                    .chapterLoaded(
-                        TaskResult { try await audioplayerClient.loadItemAt(chapterUrl) }
-                    )
-                )
+                await send(.chapterChanged)
             }
 
         case .playButtonTapped:
@@ -193,12 +170,12 @@ struct Player: ReducerProtocol {
 
         case .seekBackwardButtonTapped:
             return .run { _ in
-                await audioplayerClient.seekBackwardBy(Constants.seekBackwardInterval)
+                await audioplayer.seekBackwardBy(Constants.seekBackwardInterval)
             }
 
         case .seekForwardButtonTapped:
             return .run { _ in
-                await audioplayerClient.seekForwardBy(Constants.seekForwardInterval)
+                await audioplayer.seekForwardBy(Constants.seekForwardInterval)
             }
         }
 
@@ -208,8 +185,26 @@ struct Player: ReducerProtocol {
         switch progressAction {
         case let .progressUpdated(progress):
             return .run { _ in
-                await audioplayerClient.seekTo(progress)
+                await audioplayer.seekTo(progress)
             }
+        }
+    }
+
+    private func loadCurrentChapter(for state: inout State) -> EffectTask<Action> {
+        guard let chapterUrl = state.chapters[state.currentChapterIndex].audioURL
+        else {
+            state.alert = unavailabeChapterAlert()
+            return .none
+        }
+
+        return .run { send in
+            await audioplayer.pause()
+
+            await send(
+                .chapterLoaded(
+                    TaskResult { try await audioplayer.loadItemAt(chapterUrl) }
+                )
+            )
         }
     }
 

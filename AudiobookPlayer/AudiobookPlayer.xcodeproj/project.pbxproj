@@ -13,6 +13,7 @@
 		2C4D70DF2A52B4420052BB85 /* Audiobook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D70DE2A52B4420052BB85 /* Audiobook.swift */; };
 		2C4D70E12A52B46A0052BB85 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D70E02A52B46A0052BB85 /* Chapter.swift */; };
 		2C4D70E32A52B53A0052BB85 /* AudiobookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D70E22A52B53A0052BB85 /* AudiobookAPI.swift */; };
+		2C6C3A492A5491160068ACA4 /* Float+StringWithTruncatedZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A482A5491160068ACA4 /* Float+StringWithTruncatedZero.swift */; };
 		2C9561EF2A52C0EB002B5FD6 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561EE2A52C0EB002B5FD6 /* AudioPlayer.swift */; };
 		2C9561F12A531462002B5FD6 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561F02A531462002B5FD6 /* AudioPlayerController.swift */; };
 		2C9561F32A531F7A002B5FD6 /* AudioPlayerClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561F22A531F7A002B5FD6 /* AudioPlayerClientError.swift */; };
@@ -48,6 +49,7 @@
 		2C4D70DE2A52B4420052BB85 /* Audiobook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audiobook.swift; sourceTree = "<group>"; };
 		2C4D70E02A52B46A0052BB85 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		2C4D70E22A52B53A0052BB85 /* AudiobookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookAPI.swift; sourceTree = "<group>"; };
+		2C6C3A482A5491160068ACA4 /* Float+StringWithTruncatedZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+StringWithTruncatedZero.swift"; sourceTree = "<group>"; };
 		2C9561EE2A52C0EB002B5FD6 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		2C9561F02A531462002B5FD6 /* AudioPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
 		2C9561F22A531F7A002B5FD6 /* AudioPlayerClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerClientError.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				2C9561F92A53228F002B5FD6 /* Double+CMTimeInit.swift */,
 				2C9562012A53F2F3002B5FD6 /* Double+TimecodeString.swift */,
+				2C6C3A482A5491160068ACA4 /* Float+StringWithTruncatedZero.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				2CCDD4E12A4EBEC900503209 /* PlayerView.swift in Sources */,
 				2C4D70D62A52B2DE0052BB85 /* AudiobookProvider.swift in Sources */,
 				2CA32B4E2A5483A80053E836 /* ErrorView.swift in Sources */,
+				2C6C3A492A5491160068ACA4 /* Float+StringWithTruncatedZero.swift in Sources */,
 				2C95620F2A546CEE002B5FD6 /* PlayerView+Constants.swift in Sources */,
 				2C4D70DA2A52B2F10052BB85 /* ChapterDTO.swift in Sources */,
 				2C9562042A53F332002B5FD6 /* PlaybackProgressView+Constants.swift in Sources */,
