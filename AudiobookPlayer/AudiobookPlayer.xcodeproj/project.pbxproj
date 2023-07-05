@@ -16,6 +16,7 @@
 		2C6C3A492A5491160068ACA4 /* Float+StringWithTruncatedZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A482A5491160068ACA4 /* Float+StringWithTruncatedZero.swift */; };
 		2C6C3A4C2A5545000068ACA4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A4B2A5545000068ACA4 /* Error.swift */; };
 		2C6C3A4E2A5545AC0068ACA4 /* RetryView+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A4D2A5545AC0068ACA4 /* RetryView+Constants.swift */; };
+		2C6C3A502A5556680068ACA4 /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C3A4F2A5556680068ACA4 /* PlayerProgress.swift */; };
 		2C9561EF2A52C0EB002B5FD6 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561EE2A52C0EB002B5FD6 /* AudioPlayer.swift */; };
 		2C9561F12A531462002B5FD6 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561F02A531462002B5FD6 /* AudioPlayerController.swift */; };
 		2C9561F32A531F7A002B5FD6 /* AudioPlayerClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9561F22A531F7A002B5FD6 /* AudioPlayerClientError.swift */; };
@@ -54,6 +55,7 @@
 		2C6C3A482A5491160068ACA4 /* Float+StringWithTruncatedZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+StringWithTruncatedZero.swift"; sourceTree = "<group>"; };
 		2C6C3A4B2A5545000068ACA4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		2C6C3A4D2A5545AC0068ACA4 /* RetryView+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RetryView+Constants.swift"; sourceTree = "<group>"; };
+		2C6C3A4F2A5556680068ACA4 /* PlayerProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
 		2C9561EE2A52C0EB002B5FD6 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		2C9561F02A531462002B5FD6 /* AudioPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
 		2C9561F22A531F7A002B5FD6 /* AudioPlayerClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerClientError.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				2C9561EE2A52C0EB002B5FD6 /* AudioPlayer.swift */,
 				2C9561F22A531F7A002B5FD6 /* AudioPlayerClientError.swift */,
+				2C6C3A4F2A5556680068ACA4 /* PlayerProgress.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				2C9562002A535427002B5FD6 /* PlaybackProgress.swift in Sources */,
 				2CCDD4F72A4EDC6600503209 /* PlaybackRateView.swift in Sources */,
 				2CCDD5062A4F1C3700503209 /* PlaybackRateView+Constants.swift in Sources */,
+				2C6C3A502A5556680068ACA4 /* PlayerProgress.swift in Sources */,
 				2C4D70E12A52B46A0052BB85 /* Chapter.swift in Sources */,
 				2C4D70E32A52B53A0052BB85 /* AudiobookAPI.swift in Sources */,
 				2C9561F12A531462002B5FD6 /* AudioPlayerController.swift in Sources */,

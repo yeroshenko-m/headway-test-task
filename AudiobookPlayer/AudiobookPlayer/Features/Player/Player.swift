@@ -10,7 +10,6 @@ import ComposableArchitecture
 import Foundation
 import UIKit.UIImage
 
-#warning("Add observer for player item finished")
 #warning("Add a few tests")
 #warning("Add mode change button")
 
@@ -45,7 +44,7 @@ struct Player: ReducerProtocol {
         case viewAppeared
         case audiobookLoaded(TaskResult<Audiobook>)
         case chapterLoaded(TaskResult<Double>)
-        case playbackProgressUpdated(Double)
+        case playbackProgressUpdated(PlayerProgress)
 
         case chapterChanged
         case rateButtonTapped
@@ -118,8 +117,16 @@ struct Player: ReducerProtocol {
                 return loadCurrentChapter(for: &state)
 
             case let .playbackProgressUpdated(progress):
-                state.progress.current = progress
-                return .none
+                switch progress {
+                case let .value(progress):
+                    state.progress.current = progress
+                    return .none
+
+                case .ended:
+                    state.progress.current = .zero
+                    state.controls.playbackState = .paused
+                    return loadCurrentChapter(for: &state)
+                }
 
             case .rateButtonTapped:
                 state.playbackRate = nextPlaybackRate(for: state.playbackRate)

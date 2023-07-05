@@ -12,7 +12,7 @@ import Foundation
 
 struct AudioPlayer {
     var loadItemAt: @Sendable (URL) async throws -> Double
-    var progress: @Sendable () async -> AsyncStream<Double>
+    var progress: @Sendable () async -> AsyncStream<PlayerProgress>
     var play: @Sendable (_ rate: Float) async -> Void
     var pause: @Sendable () async -> Void
     var seekTo: @Sendable (Double) async -> Void
@@ -41,7 +41,7 @@ extension AudioPlayer {
 
             return itemDuration
         } progress: {
-            AsyncStream<Double> { continuation in
+            AsyncStream<PlayerProgress> { continuation in
                 controller.streamPlaybackProgress(into: continuation)
             }
         } play: { rate in
