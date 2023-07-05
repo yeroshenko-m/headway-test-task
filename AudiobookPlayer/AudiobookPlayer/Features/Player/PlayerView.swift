@@ -52,6 +52,15 @@ struct PlayerView: View {
                         )
                     )
                     .padding(.top, Constants.Controls.topPadding)
+
+                    Spacer()
+
+                    ContentModeSelectorView(
+                        store: store.scope(
+                            state: \.mode,
+                            action: Player.Action.mode
+                        )
+                    )
                 }
                 .onAppear {
                     viewStore.send(.viewAppeared)

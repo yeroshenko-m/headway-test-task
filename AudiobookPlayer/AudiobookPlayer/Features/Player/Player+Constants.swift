@@ -28,6 +28,7 @@ extension Player {
             static let bookLoadingFailed: String = "Audiobook loading failed ☹️"
             static let chapterLoadingFailed: String = "Sorry, chapter audio loading failed ☹️"
             static let chapterAudioUnavailable: String = "Sorry, the audio for this chaptes is unavailable ☹️"
+            static let modeUnavailable: String = "Sorry, this feature is not implemented yet ☹️"
             static let dismiss: String = "OK"
             static let retry: String = "Retry"
         }

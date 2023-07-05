@@ -22,6 +22,7 @@ struct Player: ReducerProtocol {
 
         var progress: PlaybackProgress.State = .init()
         var controls: PlayerControls.State = .init()
+        var mode: ContentModeSelector.State = .init()
 
         var alert: AlertState<Action>?
 
@@ -50,8 +51,10 @@ struct Player: ReducerProtocol {
         case rateButtonTapped
         case progress(PlaybackProgress.Action)
         case controls(PlayerControls.Action)
+        case mode(ContentModeSelector.Action)
 
         case alertDismissed
+        case modeAlertDismissed
         case retryChapterLoadingTapped
         case retryAudiobookLoadingTapped
     }
@@ -66,6 +69,10 @@ struct Player: ReducerProtocol {
 
         Scope(state: \.controls, action: /Action.controls) {
             PlayerControls()
+        }
+
+        Scope(state: \.mode, action: /Action.mode) {
+            ContentModeSelector()
         }
 
         Reduce { state, action in
@@ -140,6 +147,10 @@ struct Player: ReducerProtocol {
                 state.alert = nil
                 return .none
 
+            case .modeAlertDismissed:
+                state.mode.mode = .player
+                return .none
+
             case .retryChapterLoadingTapped:
                 state.alert = nil
                 return loadCurrentChapter(for: &state)
@@ -153,6 +164,9 @@ struct Player: ReducerProtocol {
 
             case let .controls(action):
                 return reduce(into: &state, controlsAction: action)
+
+            case let .mode(action):
+                return reduce(into: &state, modeAction: action)
             }
         }
     }
@@ -210,6 +224,18 @@ struct Player: ReducerProtocol {
         }
     }
 
+    private func reduce(into state: inout State, modeAction: ContentModeSelector.Action) -> EffectTask<Action> {
+        switch modeAction {
+        case .viewTapped:
+            state.alert = alert(
+                with: Constants.Alert.modeUnavailable,
+                dismissAction: .modeAlertDismissed
+            )
+        }
+
+        return .none
+    }
+
     private func loadAudiobook() -> EffectTask<Action> {
         return .run { send in
             await send(
@@ -246,17 +272,23 @@ struct Player: ReducerProtocol {
         }
     }
 
-    private func alert(with title: String) -> AlertState<Action> {
+    private func alert(
+        with title: String,
+        dismissAction: Action = .alertDismissed
+    ) -> AlertState<Action> {
         AlertState {
             TextState(title)
         } actions: {
-            ButtonState(action: .alertDismissed) {
+            ButtonState(action: dismissAction) {
                 TextState(Constants.Alert.dismiss)
             }
         }
     }
 
-    private func alert(with title: String, retryAction: Action) -> AlertState<Action> {
+    private func alert(
+        with title: String,
+        retryAction: Action
+    ) -> AlertState<Action> {
         AlertState {
             TextState(title)
         } actions: {
