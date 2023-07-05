@@ -127,9 +127,10 @@ struct Player: ReducerProtocol {
 
             case .rateButtonTapped:
                 state.playbackRate = nextPlaybackRate(for: state.playbackRate)
+                guard state.controls.playbackState.isPlaying else { return .none }
 
                 return .run { [rate = state.playbackRate] _ in
-                    await audioplayerClient.setPlaybackRate(rate)
+                    await audioplayer.setPlaybackRate(rate)
                 }
 
             case let .progress(action):
@@ -180,13 +181,14 @@ struct Player: ReducerProtocol {
         case .playButtonTapped:
             let playbackState = state.controls.playbackState
             guard playbackState.isEnabled else { return .none }
+            state.controls.playbackState = playbackState.isPlaying ? .paused : .playing
 
-            let action: Action = playbackState.isPlaying ? .playbackPaused : .playbackStarted
-            let task = playbackState.isPlaying ? audioplayerClient.pause : audioplayerClient.play
-
-            return .run { send in
-                await task()
-                await send(action)
+            return .run { [rate = state.playbackRate] _ in
+                if playbackState.isPlaying {
+                    await audioplayer.pause()
+                } else {
+                    await audioplayer.play(rate)
+                }
             }
 
         case .seekBackwardButtonTapped:

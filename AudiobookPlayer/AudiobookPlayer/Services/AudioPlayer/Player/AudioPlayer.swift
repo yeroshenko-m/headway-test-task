@@ -13,7 +13,7 @@ import Foundation
 struct AudioPlayer {
     var loadItemAt: @Sendable (URL) async throws -> Double
     var progress: @Sendable () async -> AsyncStream<Double>
-    var play: @Sendable () async -> Void
+    var play: @Sendable (_ rate: Float) async -> Void
     var pause: @Sendable () async -> Void
     var seekTo: @Sendable (Double) async -> Void
     var seekForwardBy: @Sendable (Double) async -> Void
@@ -44,8 +44,9 @@ extension AudioPlayer {
             AsyncStream<Double> { continuation in
                 controller.streamPlaybackProgress(into: continuation)
             }
-        } play: {
+        } play: { rate in
             controller.player.play()
+            controller.player.rate = rate
         } pause: {
             controller.player.pause()
         } seekTo: { timecode in
@@ -88,7 +89,7 @@ extension AudioPlayer: DependencyKey {
             unimplemented("\(AudioPlayer.self).loadItemAt")
         } progress: {
             unimplemented("\(AudioPlayer.self).progress")
-        } play: {
+        } play: { _ in
             unimplemented("\(AudioPlayer.self).play")
         } pause: {
             unimplemented("\(AudioPlayer.self).pause")
