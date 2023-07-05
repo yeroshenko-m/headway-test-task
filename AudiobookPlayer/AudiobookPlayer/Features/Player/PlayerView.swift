@@ -56,6 +56,10 @@ struct PlayerView: View {
                 .onAppear {
                     viewStore.send(.viewAppeared)
                 }
+                .alert(
+                    self.store.scope(state: \.alert, action: { $0 }),
+                    dismiss: .alertDismissed
+                )
             }
             .padding(Constants.Content.padding)
             .background(Constants.Content.background.ignoresSafeArea())

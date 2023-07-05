@@ -10,12 +10,16 @@ import ComposableArchitecture
 import Foundation
 import UIKit.UIImage
 
+#warning("Add observer for player item finished")
+#warning("Add a few tests")
+#warning("Add mode change button")
+
 struct Player: ReducerProtocol {
     struct State: Equatable {
         var imageURL: URL?
         var chapters: [Chapter] = []
-        var currentChapterIndex: Int = 0
-        var playbackRate: Float = 1.0
+        var currentChapterIndex: Int = Constants.defaultChapterIndex
+        var playbackRate: Float = Constants.Rate.standart
 
         var progress: PlaybackProgress.State = .init()
         var controls: PlayerControls.State = .init()
@@ -28,7 +32,7 @@ struct Player: ReducerProtocol {
         }
 
         var chapterTitle: String {
-            guard chapters.count > currentChapterIndex else { return "Descruption unavailable" }
+            guard chapters.count > currentChapterIndex else { return "Description unavailable" }
             return chapters[currentChapterIndex].title
         }
 
@@ -42,12 +46,15 @@ struct Player: ReducerProtocol {
         case audiobookLoaded(TaskResult<Audiobook>)
         case chapterLoaded(TaskResult<Double>)
         case playbackProgressUpdated(Double)
-        case playbackStarted
-        case playbackPaused
 
+        case chapterChanged
         case rateButtonTapped
         case progress(PlaybackProgress.Action)
         case controls(PlayerControls.Action)
+
+        case alertDismissed
+        case retryChapterLoadingTapped
+        case retryAudiobookLoadingTapped
     }
 
     @Dependency(\.audiobookProvider) var audiobookProvider
@@ -65,35 +72,24 @@ struct Player: ReducerProtocol {
         Reduce { state, action in
             switch action {
             case .viewAppeared:
-                return .run { send in
-                    await send(
-                        .audiobookLoaded(
-                            TaskResult { try await audiobookProvider.audiobook() }
-                        )
-                    )
-                }
+                return loadAudiobook()
 
             case let .audiobookLoaded(.success(audiobook)):
                 state.imageURL = audiobook.imageURL
                 state.chapters = audiobook.chapters
 
-                #warning("Needs to be updated")
-                let firstChapterUrl = audiobook.chapters[state.currentChapterIndex].audioURL!
-
-                return .run { send in
-                    await send(
-                        .chapterLoaded(
-                            TaskResult { try await audioplayer.loadItemAt(chapterAudio) }
-                        )
-                    )
-                }
+                return loadCurrentChapter(for: &state)
 
             case .audiobookLoaded(.failure):
-                #warning("Show retry view")
+                state.alert = alert(
+                    with: Constants.Alert.bookLoadingFailed,
+                    retryAction: .retryAudiobookLoadingTapped
+                )
+
                 return .none
 
             case let .chapterLoaded(.success(duration)):
-                state.progress.status = .enabled(.init(duration: duration, step: Constants.progressStep))
+                state.progress.status = .enabled(.init(duration: duration, step: Constants.Progress.step))
                 state.controls.playbackState = .paused
                 state.controls.hasNextItem = state.hasNextChapter
                 state.controls.hasPreviousItem = state.hasPreviousChapter
@@ -109,6 +105,11 @@ struct Player: ReducerProtocol {
                 state.controls.playbackState = .disabled
                 state.controls.hasNextItem = state.hasNextChapter
                 state.controls.hasPreviousItem = state.hasPreviousChapter
+                state.alert = alert(
+                    with: Constants.Alert.chapterLoadingFailed,
+                    retryAction: .retryChapterLoadingTapped
+                )
+
                 return .none
 
             case .chapterChanged:
@@ -127,6 +128,18 @@ struct Player: ReducerProtocol {
                 return .run { [rate = state.playbackRate] _ in
                     await audioplayer.setPlaybackRate(rate)
                 }
+
+            case .alertDismissed:
+                state.alert = nil
+                return .none
+
+            case .retryChapterLoadingTapped:
+                state.alert = nil
+                return loadCurrentChapter(for: &state)
+
+            case .retryAudiobookLoadingTapped:
+                state.alert = nil
+                return loadAudiobook()
 
             case let .progress(action):
                 return reduce(into: &state, progressAction: action)
@@ -170,12 +183,12 @@ struct Player: ReducerProtocol {
 
         case .seekBackwardButtonTapped:
             return .run { _ in
-                await audioplayer.seekBackwardBy(Constants.seekBackwardInterval)
+                await audioplayer.seekBackwardBy(Constants.Progress.seekBackwardInterval)
             }
 
         case .seekForwardButtonTapped:
             return .run { _ in
-                await audioplayer.seekForwardBy(Constants.seekForwardInterval)
+                await audioplayer.seekForwardBy(Constants.Progress.seekForwardInterval)
             }
         }
 
@@ -190,10 +203,20 @@ struct Player: ReducerProtocol {
         }
     }
 
+    private func loadAudiobook() -> EffectTask<Action> {
+        return .run { send in
+            await send(
+                .audiobookLoaded(
+                    TaskResult { try await audiobookProvider.audiobook() }
+                )
+            )
+        }
+    }
+
     private func loadCurrentChapter(for state: inout State) -> EffectTask<Action> {
         guard let chapterUrl = state.chapters[state.currentChapterIndex].audioURL
         else {
-            state.alert = unavailabeChapterAlert()
+            state.alert = alert(with: Constants.Alert.chapterAudioUnavailable)
             return .none
         }
 
@@ -209,10 +232,34 @@ struct Player: ReducerProtocol {
     }
 
     private func nextPlaybackRate(for currentRate: Float) -> Float {
-        if currentRate < Constants.maxRate {
-            return currentRate + Constants.rateStep
+        if currentRate < Constants.Rate.max {
+            return currentRate + Constants.Rate.step
         } else {
-            return Constants.minRate
+            return Constants.Rate.min
+        }
+    }
+
+    private func alert(with title: String) -> AlertState<Action> {
+        AlertState {
+            TextState(title)
+        } actions: {
+            ButtonState(action: .alertDismissed) {
+                TextState(Constants.Alert.dismiss)
+            }
+        }
+    }
+
+    private func alert(with title: String, retryAction: Action) -> AlertState<Action> {
+        AlertState {
+            TextState(title)
+        } actions: {
+            ButtonState(action: retryAction) {
+                TextState(Constants.Alert.retry)
+            }
+
+            ButtonState(action: .alertDismissed) {
+                TextState(Constants.Alert.dismiss)
+            }
         }
     }
 }
