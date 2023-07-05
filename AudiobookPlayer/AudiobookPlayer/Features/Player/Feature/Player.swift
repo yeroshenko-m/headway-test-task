@@ -10,55 +10,7 @@ import ComposableArchitecture
 import Foundation
 import UIKit.UIImage
 
-#warning("Add a few tests")
-#warning("Add mode change button")
-
 struct Player: ReducerProtocol {
-    struct State: Equatable {
-        var imageURL: URL?
-        var chapters: [Chapter] = []
-        var currentChapterIndex: Int = Constants.defaultChapterIndex
-        var playbackRate: Float = Constants.Rate.standart
-
-        var progress: PlaybackProgress.State = .init()
-        var controls: PlayerControls.State = .init()
-        var mode: ContentModeSelector.State = .init()
-
-        var alert: AlertState<Action>?
-
-        var chaptersCountTitle: String {
-            guard !chapters.isEmpty else { return "No keypoints available" }
-            return "Key point \(currentChapterIndex + 1) of \(chapters.count)"
-        }
-
-        var chapterTitle: String {
-            guard chapters.count > currentChapterIndex else { return "Description unavailable" }
-            return chapters[currentChapterIndex].title
-        }
-
-        var rateTitle: String { "Rate \(playbackRate.stringWithTruncatedZero)x" }
-        var hasNextChapter: Bool { chapters.count > currentChapterIndex }
-        var hasPreviousChapter: Bool { currentChapterIndex > .zero }
-    }
-
-    enum Action: Equatable {
-        case viewAppeared
-        case audiobookLoaded(TaskResult<Audiobook>)
-        case chapterLoaded(TaskResult<Double>)
-        case playbackProgressUpdated(PlayerProgress)
-
-        case chapterChanged
-        case rateButtonTapped
-        case progress(PlaybackProgress.Action)
-        case controls(PlayerControls.Action)
-        case mode(ContentModeSelector.Action)
-
-        case alertDismissed
-        case modeAlertDismissed
-        case retryChapterLoadingTapped
-        case retryAudiobookLoadingTapped
-    }
-
     @Dependency(\.audiobookProvider) var audiobookProvider
     @Dependency(\.audioplayer) var audioplayer
 

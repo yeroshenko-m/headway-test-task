@@ -13,7 +13,12 @@ import SwiftUI
 struct AudiobookPlayerApp: App {
     var body: some Scene {
         WindowGroup {
-            PlayerView(store: Store(initialState: Player.State(), reducer: Player()))
+            PlayerView(
+                store: Store(
+                    initialState: Player.State(),
+                    reducer: Player()
+                )
+            )
         }
     }
 }
