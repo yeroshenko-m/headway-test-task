@@ -10,6 +10,6 @@ import Foundation
 
 extension Float {
     var stringWithTruncatedZero: String {
-        return truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+        truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
 }

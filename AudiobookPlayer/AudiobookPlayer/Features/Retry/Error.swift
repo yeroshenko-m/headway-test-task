@@ -18,7 +18,7 @@ struct Retry: ReducerProtocol {
         case retryTapped
     }
 
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    func reduce(into _: inout State, action: Action) -> EffectTask<Action> {
         switch action {
         case .retryTapped:
             return .none

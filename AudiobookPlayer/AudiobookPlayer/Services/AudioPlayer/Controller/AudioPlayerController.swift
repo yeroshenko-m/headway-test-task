@@ -34,7 +34,6 @@ final class PlayerController {
         of playerItem: AVPlayerItem,
         into continuation: AsyncThrowingStream<Double, Error>.Continuation
     ) {
-
         let observation = playerItem.observe(\.status) { item, _ in
             switch item.status {
             case .readyToPlay:

@@ -12,7 +12,7 @@ import SwiftUI
 extension PlayerView {
     enum Constants {
         enum Content {
-            static let background: Color = Color(uiColor: .tertiarySystemGroupedBackground)
+            static let background: Color = .init(uiColor: .tertiarySystemGroupedBackground)
             static let padding: CGFloat = 10.0
         }
 
@@ -32,6 +32,7 @@ extension PlayerView {
         enum Controls {
             static let topPadding: CGFloat = 50.0
         }
+
         enum Cover {
             static let scale: CGFloat = 0.4
         }
@@ -45,4 +46,5 @@ extension PlayerView {
         }
     }
 }
+
 // swiftlint:enable nesting

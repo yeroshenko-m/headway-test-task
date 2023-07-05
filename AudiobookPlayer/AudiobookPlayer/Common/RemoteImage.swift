@@ -32,9 +32,9 @@ struct RemoteImage: View {
 }
 
 extension RemoteImage {
-    struct Constants {
+    enum Constants {
         static let placeholderImage: String = "doc.plaintext.fill"
-        static let backgroundColor: Color = Color(uiColor: .systemGray5)
-        static let foregroundColor: Color = Color(uiColor: .gray)
+        static let backgroundColor: Color = .init(uiColor: .systemGray5)
+        static let foregroundColor: Color = .init(uiColor: .gray)
     }
 }

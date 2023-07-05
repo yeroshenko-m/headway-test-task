@@ -36,4 +36,5 @@ extension Player {
         static let defaultChapterIndex: Int = 0
     }
 }
+
 // swiftlint:enable nesting

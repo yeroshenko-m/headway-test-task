@@ -13,7 +13,7 @@ struct PlayerControlsView: View {
     let store: StoreOf<PlayerControls>
 
     var body: some View {
-        WithViewStore(self.store) { $0 }  content: { viewStore in
+        WithViewStore(self.store) { $0 } content: { viewStore in
             HStack(spacing: Constants.Icons.spacing) {
                 button(
                     with: Constants.Icons.previous,

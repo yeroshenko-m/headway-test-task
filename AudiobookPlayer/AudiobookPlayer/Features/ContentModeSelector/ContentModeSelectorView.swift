@@ -29,7 +29,7 @@ private enum Constants {
     }
 
     enum Thumb {
-        static let color: Color = Color(uiColor: .systemBlue)
+        static let color: Color = .init(uiColor: .systemBlue)
         static let width: CGFloat = 45.0
     }
 }

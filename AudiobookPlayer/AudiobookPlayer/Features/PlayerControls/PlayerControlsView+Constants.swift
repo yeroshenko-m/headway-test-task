@@ -19,7 +19,7 @@ extension PlayerControlsView {
             static let goForward = "goforward.10"
             static let previous = "backward.end.fill"
             static let next = "forward.end.fill"
-            static let color: Color = Color(uiColor: .label)
+            static let color: Color = .init(uiColor: .label)
             static let spacing: CGFloat = 25.0
         }
 
@@ -30,9 +30,10 @@ extension PlayerControlsView {
         }
 
         enum Colors {
-            static let enabled: Color = Color(uiColor: .label)
-            static let disabled: Color = Color(uiColor: .label).opacity(0.25)
+            static let enabled: Color = .init(uiColor: .label)
+            static let disabled: Color = .init(uiColor: .label).opacity(0.25)
         }
     }
 }
+
 // swiftlint:enable nesting

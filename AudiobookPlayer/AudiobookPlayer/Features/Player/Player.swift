@@ -212,10 +212,9 @@ struct Player: ReducerProtocol {
                 await audioplayer.seekForwardBy(Constants.Progress.seekForwardInterval)
             }
         }
-
     }
 
-    private func reduce(into state: inout State, progressAction: PlaybackProgress.Action) -> EffectTask<Action> {
+    private func reduce(into _: inout State, progressAction: PlaybackProgress.Action) -> EffectTask<Action> {
         switch progressAction {
         case let .progressUpdated(progress):
             return .run { _ in
@@ -237,7 +236,7 @@ struct Player: ReducerProtocol {
     }
 
     private func loadAudiobook() -> EffectTask<Action> {
-        return .run { send in
+        .run { send in
             await send(
                 .audiobookLoaded(
                     TaskResult { try await audiobookProvider.audiobook() }

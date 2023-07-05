@@ -26,4 +26,5 @@ extension RetryView {
         }
     }
 }
+
 // swiftlint:enable nesting

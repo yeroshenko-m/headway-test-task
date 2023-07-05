@@ -12,7 +12,7 @@ import SwiftUI
 extension PlaybackRateView {
     enum Constants {
         enum Label {
-            static let color: Color = Color(uiColor: .label)
+            static let color: Color = .init(uiColor: .label)
             static let font: Font = .system(size: 12.0, weight: .medium)
             static let padding: CGFloat = 10.0
         }
@@ -23,4 +23,5 @@ extension PlaybackRateView {
         }
     }
 }
+
 // swiftlint:enable nesting

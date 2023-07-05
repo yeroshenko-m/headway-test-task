@@ -25,7 +25,7 @@ struct PlayerView: View {
                         .foregroundColor(Constants.ChaptersCountLabel.color)
                         .padding(.top, Constants.ChaptersCountLabel.topPadding)
 
-                    Text(viewStore.chapterTitle )
+                    Text(viewStore.chapterTitle)
                         .font(Constants.ChapterTitleLabel.font)
                         .multilineTextAlignment(.center)
                         .frame(height: Constants.ChapterTitleLabel.height)

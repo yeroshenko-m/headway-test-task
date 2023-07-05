@@ -6,8 +6,8 @@
 //  Created: 30.06.2023
 //
 
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 @main
 struct AudiobookPlayerApp: App {

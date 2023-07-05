@@ -20,6 +20,7 @@ struct PlayerControls: ReducerProtocol {
             var isEnabled: Bool { self != .disabled }
             var isPlaying: Bool { self == .playing }
         }
+
         // swiftlint:enable nesting
 
         var playbackState: PlaybackState = .disabled
@@ -38,7 +39,7 @@ struct PlayerControls: ReducerProtocol {
         case seekBackwardButtonTapped
     }
 
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    func reduce(into _: inout State, action _: Action) -> EffectTask<Action> {
         .none
     }
 }
